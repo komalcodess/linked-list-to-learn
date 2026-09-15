@@ -114,6 +114,56 @@ void display(node **head)
     }
 }
 
+node* deleteFront(node * head)
+{
+    node* temp;
+    
+    if(head==NULL)
+    {
+        printf("The list is empty");
+        return;
+    }
+
+
+    temp=head;
+    head=head->next;
+    temp->next=NULL;
+    free(temp);
+    temp=NULL;
+    return head;
+
+
+}
+
+node * deleteFromLast(node * head)
+{
+    node * temp,*prev;
+    
+    if(head==NULL){
+    
+    printf("The list is empty");
+    }
+     if(head->next == NULL)
+    {
+        free(head);
+        return NULL;
+    }
+
+    else{
+        temp=head;
+        prev=head->next;
+        while(prev->next!=NULL)
+        {
+            temp=temp->next;
+            prev=prev->next;
+        }
+        temp->next=NULL;
+        free(prev);
+        
+       return head;
+    }
+}
+
 int main(){
     int choice,n;
     node* head=NULL;
